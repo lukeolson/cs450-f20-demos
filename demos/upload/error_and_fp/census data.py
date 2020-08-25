@@ -6,15 +6,10 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-
-import seaborn as sns
-sns.set_context('talk')
-
+plt.style.use('seaborn-talk')
 from io import StringIO
 
 import scipy.optimize
-
-get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 # In[2]:
@@ -93,6 +88,10 @@ xcount = f(xyear-1900, *popt)
 plt.plot(xyear, xcount, '-')
 plt.text(xyear[-1], xcount[-1], f'{xcount[-1]}', bbox=dict(facecolor='white'))
 
+
+# In[6]:
+
+
 count[-1] = 1.05 * 308.746
 plt.figure()
 plt.plot(year, count, 'o')
@@ -131,44 +130,6 @@ popt, pcov = scipy.optimize.curve_fit(f, year-1900, count, p0=p)
 xcount = f(xyear-1900, *popt)
 plt.plot(xyear, xcount, '-')
 plt.text(xyear[-1], xcount[-1], f'{xcount[-1]}', bbox=dict(facecolor='white'))
-
-
-# In[ ]:
-
-
-popt
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-f = f1
-p = p1
-popt, pcov = scipy.optimize.curve_fit(f, year-1900, count, p0=p)
-
-
-# In[ ]:
-
-
-popt
-
-
-# In[ ]:
-
-
-a, b, c = popt
-
-
-# In[ ]:
-
-
-a * np.exp(b * (year-1900)) + c
 
 
 # In[ ]:

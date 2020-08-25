@@ -9,13 +9,13 @@
 # $$
 # Let's see what we get using floating point:
 
-# In[2]:
+# In[1]:
 
 
 import numpy as np
 
 
-# In[3]:
+# In[6]:
 
 
 n = int(0)
@@ -32,6 +32,9 @@ while True:
     if n % 200000 == 0:
         print("1/n = %g, sum0 = %g"%(1.0/n, my_sum))
         
+    if my_sum == last_sum:
+        print("1/n = %g, sum0 = %g"%(1.0/n, my_sum))
+        break
 
 
 # In[2]:

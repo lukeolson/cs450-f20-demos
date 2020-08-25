@@ -9,12 +9,13 @@
 
 
 import numpy as np
-import matplotlib.pyplot as pt
+import matplotlib.pyplot as plt
+plt.style.use('seaborn-talk')
 
 
 # **Task:** Approximate a function (here: a parabola, by a line)
 
-# In[4]:
+# In[2]:
 
 
 center = -1
@@ -29,24 +30,12 @@ def df(x):
 grid = np.linspace(center-width/2, center+width/2, 100)
 
 fx = f(grid)
-pt.plot(grid, fx)
-pt.plot(grid, f(center) + df(center) * (grid-center))
+plt.plot(grid, fx)
+plt.plot(grid, f(center) + df(center) * (grid-center))
 
-pt.xlim([grid[0], grid[-1]])
-pt.ylim([np.min(fx), np.max(fx)])
+plt.xlim([grid[0], grid[-1]])
+plt.ylim([np.min(fx), np.max(fx)])
 
 
 # * What's the error we see?
 # * What if we make `width` smaller?
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-

@@ -6,28 +6,28 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-get_ipython().run_line_magic('matplotlib', 'inline')
+import scipy as sp
 
 
-# In[2]:
+# In[8]:
 
 
-get_ipython().run_cell_magic('timeit', '', 's = 0\nfor i in range(100):\n    s += i**2')
+get_ipython().run_cell_magic('timeit', '', 's = 0\nfor i in range(1000000):\n    s += i**2')
 
 
-# In[3]:
+# In[5]:
 
 
 print(s)
 
 
-# In[4]:
+# In[9]:
 
 
-get_ipython().run_cell_magic('timeit', '', 'a = np.arange(100)\ns = (a**2).sum()')
+get_ipython().run_cell_magic('timeit', '', 'a = np.arange(1000000)\ns = (a**2).sum()')
 
 
-# In[5]:
+# In[ ]:
 
 
 print(s)

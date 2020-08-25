@@ -100,7 +100,7 @@ la.norm(x, np.inf)
 # 
 # We'll make a bunch of vectors in 2D (for visualization) and then scale them so that $\|x\|=1$.
 
-# In[12]:
+# In[11]:
 
 
 alpha = np.linspace(0, 2*np.pi, 2000, endpoint=True)
@@ -120,6 +120,18 @@ pt.gca().set_aspect("equal")
 pt.plot(norm_vecs[0], norm_vecs[1])
 pt.xlim([-1.5, 1.5])
 pt.ylim([-1.5, 1.5])
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
 
 
 # In[ ]:
