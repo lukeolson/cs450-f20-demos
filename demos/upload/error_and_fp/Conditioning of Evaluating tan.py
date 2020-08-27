@@ -3,7 +3,7 @@
 
 # # Conditioning of evaluating tan()
 
-# In[2]:
+# In[ ]:
 
 
 import numpy as np
@@ -12,7 +12,7 @@ import matplotlib.pyplot as pt
 
 # Let us estimate the sensitivity of evaluating the $\tan$ function:
 
-# In[3]:
+# In[ ]:
 
 
 x = np.linspace(-5, 5, 1000)
@@ -20,7 +20,7 @@ pt.ylim([-10, 10])
 pt.plot(x, np.tan(x))
 
 
-# In[18]:
+# In[ ]:
 
 
 x = np.pi/2 - 0.0001
@@ -28,13 +28,13 @@ x = np.pi/2 - 0.0001
 x
 
 
-# In[19]:
+# In[ ]:
 
 
 np.tan(x)
 
 
-# In[20]:
+# In[ ]:
 
 
 dx = 0.00005
@@ -46,7 +46,7 @@ np.tan(x+dx)
 # ### From evaluation data
 # 
 
-# In[21]:
+# In[ ]:
 
 
 
@@ -55,7 +55,7 @@ np.abs(np.tan(x+dx) - np.tan(x))/np.abs(np.tan(x)) / (np.abs(dx) / np.abs(x))
 
 # ### Using the derivative estimate
 
-# In[22]:
+# In[ ]:
 
 
 import sympy as sp
@@ -69,7 +69,7 @@ df
 
 # Evaluate the derivative estimate. Use `.subs(xsym, x)` to substitute in the value of `x`.
 
-# In[23]:
+# In[ ]:
 
 
 (xsym*df/f).subs(xsym, x)

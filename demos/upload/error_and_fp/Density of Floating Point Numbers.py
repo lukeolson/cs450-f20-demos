@@ -5,14 +5,14 @@
 # 
 # This notebook enumerates all possible floating point nubmers in a floating point system and shows them in a plot to illustrate their density.
 
-# In[2]:
+# In[ ]:
 
 
 import matplotlib.pyplot as pt
 import numpy as np
 
 
-# In[13]:
+# In[ ]:
 
 
 significand_bits = 4

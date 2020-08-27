@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 
 import numpy as np
@@ -12,7 +12,7 @@ from io import StringIO
 import scipy.optimize
 
 
-# In[2]:
+# In[ ]:
 
 
 ctxt ="""
@@ -31,7 +31,7 @@ ctxt ="""
 """
 
 
-# In[3]:
+# In[ ]:
 
 
 d = np.genfromtxt(StringIO(ctxt))
@@ -41,13 +41,13 @@ print(year)
 print(count)
 
 
-# In[4]:
+# In[ ]:
 
 
 plt.plot(year, count, 'o')
 
 
-# In[5]:
+# In[ ]:
 
 
 plt.figure()
@@ -89,7 +89,7 @@ plt.plot(xyear, xcount, '-')
 plt.text(xyear[-1], xcount[-1], f'{xcount[-1]}', bbox=dict(facecolor='white'))
 
 
-# In[6]:
+# In[ ]:
 
 
 count[-1] = 1.05 * 308.746

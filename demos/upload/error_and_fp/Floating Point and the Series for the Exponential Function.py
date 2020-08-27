@@ -3,7 +3,7 @@
 
 # # Floating Point Arithmetic and the Series for the Exponential Function
 
-# In[4]:
+# In[2]:
 
 
 import numpy as np
@@ -24,7 +24,7 @@ x = 1e0 # flip sign
 true_f = np.exp(x)
 e = []
 
-for i in range(0, 10): # crank up
+for i in range(0, 20): # crank up
     d = np.prod(
             np.arange(1, i+1).astype(np.float))
     

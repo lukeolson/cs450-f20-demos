@@ -5,7 +5,7 @@
 
 # What will the following code snippet do?
 
-# In[1]:
+# In[ ]:
 
 
 from time import sleep
@@ -16,7 +16,7 @@ while x != 1.0:
     x += 0.1
     print(repr(x))
     
-    sleep(0.1)
+    sleep(0.5)
 
 
 # How do you prevent that from happening?

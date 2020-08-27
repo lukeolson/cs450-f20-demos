@@ -3,46 +3,49 @@
 
 # # Picking apart a floating point number
 
-# In[25]:
+# https://en.wikipedia.org/wiki/Double-precision_floating-point_format#Double-precision_examples
+
+# In[ ]:
 
 
-# Never mind the details of this function...
+import struct
 
-def pretty_print_fp(x):
-    print("---------------------------------------------")
-    print("Floating point structure for %r" % x)
-    print("---------------------------------------------")
-    import struct
-    s = struct.pack("d", x)
+def double2bin(x, precision='double'):
+    if precision == 'double':
+        s = struct.unpack(">Q", struct.pack(">d", x))[0]  # pack as a double, unpack as unsigned long long
+        b = f'{s:064b}' # print to string as binary and force 64 bits
+    
+    if precision == 'single':
+        s = struct.unpack(">L", struct.pack(">f", x))[0]  # pack as a single, unpack as unsigned long
+        b = f'{s:032b}' # print to string as binary and force 32 bits
 
-    def get_bit(i):
-        byte_nr, bit_nr = divmod(i, 8)
-        return int(bool(
-            s[byte_nr] & (1 << bit_nr)
-            ))
+    return b
 
-    def get_bits(lsb, count):
-        return sum(get_bit(i+lsb)*2**i for i in range(count))
-
-    # https://en.wikipedia.org/wiki/Double_precision_floating-point_format
-
-    print("Sign bit (1:negative):", get_bit(63))
-    exponent = get_bits(52, 11)
-    print("Stored exponent: %d" % exponent)
-    print("Exponent (with offset): %d" % (exponent - 1023))
-    fraction = get_bits(0, 52)
-    if exponent != 0:
-        significand = fraction + 2**52
+def printbits(b):
+    if len(b) == 32:
+        esize = 8
+        offset = -127
+    elif len(b) == 64:
+        esize = 11
+        offset = -1023
     else:
-        significand = fraction
-    print("Significand (binary):", bin(significand)[2:])
-    print("Shifted significand:", repr(significand / (2**52)))
+        raise ValueError('only 32 or 64 bit')
+    sign = b[0]
+    exponent = b[1:1+esize]
+    significand = b[1+esize:]
+
+    print(f'          Sign bit: {sign}')
+    print(f'(shifted) Exponent: {exponent} ({int(exponent, 2)} -> {offset+int(exponent, 2)})')
+    print(f'       Significand: 1.{significand}')
+    print("                      |         |         |         |         |         | ")
+    print("                      0         1         2         3         4         5 ")
+    print("                      0123456789012345678901234567890123456789012345678901")
 
 
-# In[27]:
+# In[ ]:
 
 
-pretty_print_fp(3)
+printbits(double2bin(0.25, precision='single'))
 
 
 # Things to try:
@@ -52,9 +55,3 @@ pretty_print_fp(3)
 # * 0.5,0.25
 # * $2^{\pm 1023}$, $2^{\pm 1024}$
 # * `float("nan")`
-
-# In[ ]:
-
-
-
-
