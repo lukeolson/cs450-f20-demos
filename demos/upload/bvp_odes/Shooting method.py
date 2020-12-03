@@ -3,14 +3,14 @@
 
 # # Shooting Method
 
-# In[7]:
+# In[1]:
 
 
 import numpy as np
 import matplotlib.pyplot as pt
 
 
-# In[8]:
+# In[3]:
 
 
 def rk4_step(y, t, h, f):
@@ -27,7 +27,7 @@ def rk4_step(y, t, h, f):
 # 
 # with $w(0)=4$ and $w(1)=1$. (Example due to Stoer and Bulirsch)
 
-# In[9]:
+# In[4]:
 
 
 def f(t, y):
@@ -37,7 +37,7 @@ def f(t, y):
 
 # The following function carries out the shooting method for a given $w'(0)$ using RK4:
 
-# In[20]:
+# In[5]:
 
 
 def shoot(w_prime):
@@ -67,7 +67,7 @@ def shoot(w_prime):
 # 
 # (You may call `pt.legend` to take advantage of automatic labeling.)
 
-# In[19]:
+# In[6]:
 
 
 
@@ -83,7 +83,7 @@ pt.legend(loc="best")
 # 
 # (You may call `pt.legend` to take advantage of automatic labeling.)
 
-# In[18]:
+# In[7]:
 
 
 

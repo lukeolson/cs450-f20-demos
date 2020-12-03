@@ -1,17 +1,16 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[9]:
+# In[ ]:
 
 
 import numpy as np
 import matplotlib.pyplot as plt
 get_ipython().run_line_magic('matplotlib', 'inline')
-import seaborn as sns
-sns.set_context('talk')
+plt.style.use('seaborn-talk')
 
 
-# In[10]:
+# In[ ]:
 
 
 np.random.seed(2222)
@@ -26,9 +25,10 @@ for ww in w:
 print(v)
 
 
-# In[11]:
+# In[ ]:
 
 
+#A = np.random.rand(5,5)
 X = np.random.rand(5,3)
 for i in range(50):
     Q, R = np.linalg.qr(X, mode='reduced')
@@ -37,9 +37,15 @@ for i in range(50):
     print(np.diag(X.conj().T @ (A @ X)) / np.diag(X.conj().T @ X))
 
 
+# In[ ]:
+
+
+Q.T @ A @ Q
+
+
 # # QR
 
-# In[12]:
+# In[ ]:
 
 
 X = A.copy()
@@ -55,13 +61,13 @@ for i in range(10):
     #print(Qall)
 
 
-# In[13]:
+# In[ ]:
 
 
 from matplotlib.colors import LogNorm
 
 
-# In[78]:
+# In[ ]:
 
 
 np.random.seed(12112019)
@@ -97,7 +103,7 @@ for i in range(niter):
 f.colorbar(im, ax=ax.ravel().tolist(), shrink=0.95)
 
 
-# In[79]:
+# In[ ]:
 
 
 Xtmp

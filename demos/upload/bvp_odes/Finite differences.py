@@ -3,7 +3,7 @@
 
 # # Finite Differences for Boundary Value Problems
 
-# In[6]:
+# In[1]:
 
 
 import numpy as np
@@ -18,11 +18,11 @@ import scipy.sparse as sps
 # 
 # with $u(-1)=3$ and $u(1)=-3$.
 
-# In[20]:
+# In[43]:
 
 
 #n = 9
-n = 200
+n = 2000
 
 mesh = np.linspace(-1, 1, n)
 h = mesh[1] - mesh[0]
@@ -30,7 +30,13 @@ h = mesh[1] - mesh[0]
 
 # Use `sps.diags(values, offsets=..., shape=(n, n))` to make a centered difference matrix.
 
-# In[30]:
+# In[44]:
+
+
+get_ipython().run_line_magic('pinfo', 'sps.diags')
+
+
+# In[45]:
 
 
 A = sps.diags(
@@ -47,7 +53,7 @@ if n < 10:
 # * change `shape` and offsets
 # * Take `h` into account
 
-# In[31]:
+# In[46]:
 
 
 second_deriv = sps.diags(
@@ -62,7 +68,7 @@ if n < 10:
 
 # Make a matrix for the lower-order term.
 
-# In[32]:
+# In[47]:
 
 
 factor = sps.diags(
@@ -78,7 +84,7 @@ if n < 10:
 
 # Build the matrix for the interior:
 
-# In[24]:
+# In[48]:
 
 
 A_int = second_deriv+factor
@@ -89,7 +95,7 @@ if n < 10:
 
 # Glue on the rows for the boundary conditions:
 
-# In[25]:
+# In[49]:
 
 
 A = sps.vstack([
@@ -103,11 +109,17 @@ if n < 10:
     print(A.todense())
 
 
+# In[50]:
+
+
+pt.spy(A)
+
+
 # Next, assemble the right-hand side as `rhs`:
 # 
 # Pay special attention to the boundary conditions. What entries of `rhs` do they correspond to?
 
-# In[26]:
+# In[51]:
 
 
 rhs = np.zeros(n)
@@ -117,7 +129,7 @@ rhs[-1] = -3
 
 # To wrap up, solve and plot:
 
-# In[27]:
+# In[52]:
 
 
 import scipy.sparse.linalg as sla
@@ -125,10 +137,22 @@ import scipy.sparse.linalg as sla
 sol = sla.spsolve(A, rhs)
 
 
-# In[28]:
+# In[53]:
 
 
-pt.plot(mesh, sol)
+pt.plot(mesh, sol, 'o-')
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
 
 
 # In[ ]:
